@@ -1,17 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { closeMenu } from "../utils/appSlice";
 import { useSearchParams } from "react-router-dom";
-import CommentsContainer from "./CommentsContainer";
 import Recommendations from './Recommendations';
 import WatchPageVideoDetails from "./WatchPageVideoDetails";
-import LiveChat from "./LiveChat";
+
 
 
 // Watch Page - opens when a video is clicked
 const WatchPage = () => {
     
-    const [showChat, setShowChat] = useState(false);
+    // const [showChat, setShowChat] = useState(false);
     const [searchParams] = useSearchParams();
     const videoId = searchParams.get("v");
 
@@ -19,7 +18,7 @@ const WatchPage = () => {
     
     useEffect(() => {
         dispatch(closeMenu());
-    }, [])
+    })
 
     return (
         <div className="p-2 w-full pl-10 grid grid-cols-12 dark:bg-slate-800 dark:text-white">
@@ -41,10 +40,10 @@ const WatchPage = () => {
 
             {<div className="p-1 md:black w-full flex flex-col col-span-4">
                 <div className="w-full">
-                    {showChat && <LiveChat />}
+                    {/* {showChat && <LiveChat />}
                     <div className="w-full flex justify-center rounded-3xl">
                         <button data-testid="show-chat" onClick={setShowChat(!showChat)} className="w-full py-2 border rounded-3xl my-2 hover:bg-gray-200 dark:hover:bg-slat-600">{showChat ? "Hide Chat": "Show Chat"}</button>
-                    </div>
+                    </div> */}
                 </div>
                 <Recommendations />
             </div>}
